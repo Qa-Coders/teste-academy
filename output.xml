@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.4 on win32)" generated="20240708 10:15:46.711" rpa="false" schemaversion="4">
+<suite id="s1" name="Login" source="e:\MARTINS\Robot\TesteGitRobot\teste-academy\tests\API\login.robot">
+<test id="s1-t1" name="Cénario: Login com sucesso" line="5">
+<kw name="Fazer login" library="common">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>mail=sysadmin@qacoders.com</arg>
+<arg>password=1234@Test</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240708 10:15:47.384" level="INFO">${body} = {'mail': 'sysadmin@qacoders.com', 'password': '1234@Test'}</msg>
+<status status="PASS" starttime="20240708 10:15:47.383" endtime="20240708 10:15:47.403"/>
+</kw>
+<kw name="Criar sessão" library="common">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240708 10:15:47.405" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20240708 10:15:47.404" endtime="20240708 10:15:47.405"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>LoginTest</arg>
+<arg>https://develop.qacoders-academy.com.br</arg>
+<arg>${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240708 10:15:47.406" level="INFO">Creating Session using : alias=LoginTest, url=https://develop.qacoders-academy.com.br, headers={'accept': 'application/json', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240708 10:15:47.406" endtime="20240708 10:15:47.407"/>
+</kw>
+<status status="PASS" starttime="20240708 10:15:47.404" endtime="20240708 10:15:47.407"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>LoginTest</arg>
+<arg>/api/login/</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20240708 10:15:51.807" level="INFO">POST Request : url=https://develop.qacoders-academy.com.br/api/login/ 
+ path_url=/api/login/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '58'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "1234@Test"}' 
+ </msg>
+<msg timestamp="20240708 10:15:51.808" level="INFO">POST Response : url=https://develop.qacoders-academy.com.br/api/login/ 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Mon, 08 Jul 2024 13:16:43 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'ETag': 'W/"536-B528hALFLUu5KLbeorRKUgNIei4"', 'Content-Encoding': 'gzip'} 
+ body={"msg":"Olá Qa-Coders-SYSADMIN, autenticação autorizada com sucesso!","user":{"_id":"655e91a1748c617229bcd64e","fullName":"Qa-Coders-SYSADMIN","mail":"sysadmin@qacoders.com","password":"$2b$10$6/EvGom7BqM5ecGYaXCms.ysx1xLahOZi/Tzx1Ofoe8eeAVnmhBsy","accessProfile":"SYSADMIN","cpf":"11111111111","status":true,"audit":[{"registeredBy":{"userId":"111111111111111111","userLogin":"sysadmin@qacoders.com"},"registrationDate":"quarta-feira, 22/11/2023, 20:41:20 BRT","registrationNumber":"01","companyId":"Qa.Coders","_id":"655e91a1748c617229bcd64f"}],"__v":0},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTVlOTFhMTc0OGM2MTcyMjliY2Q2NGUiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2L0V2R29tN0JxTTVlY0dZYVhDbXMueXN4MXhMYWhPWmkvVHp4MU9mb2U4ZWVBVm5taEJzeSIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoicXVhcnRhLWZlaXJhLCAyMi8xMS8yMDIzLCAyMDo0MToyMCBCUlQiLCJyZWdpc3RyYXRpb25OdW1iZXIiOiIwMSIsImNvbXBhbnlJZCI6IlFhLkNvZGVycyIsIl9pZCI6IjY1NWU5MWExNzQ4YzYxNzIyOWJjZDY0ZiJ9XSwiX192IjowLCJpYXQiOjE3MjA0NDQ2MDMsImV4cCI6MTcyMDUzMTAwM30.Qw_K9PhtLBwhqDEaz64_VAzBsm2Ho-z8IX9uK8RWGTU"} 
+ </msg>
+<msg timestamp="20240708 10:15:51.809" level="INFO">C:\Users\Martins\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'develop.qacoders-academy.com.br'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240708 10:15:51.811" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240708 10:15:47.407" endtime="20240708 10:15:51.811"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20240708 10:15:51.812" endtime="20240708 10:15:51.814"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240708 10:15:51.816" level="INFO">{'msg': 'Olá Qa-Coders-SYSADMIN, autenticação autorizada com sucesso!', 'user': {'_id': '655e91a1748c617229bcd64e', 'fullName': 'Qa-Coders-SYSADMIN', 'mail': 'sysadmin@qacoders.com', 'password': '$2b$10$6/EvGom7BqM5ecGYaXCms.ysx1xLahOZi/Tzx1Ofoe8eeAVnmhBsy', 'accessProfile': 'SYSADMIN', 'cpf': '11111111111', 'status': True, 'audit': [{'registeredBy': {'userId': '111111111111111111', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'quarta-feira, 22/11/2023, 20:41:20 BRT', 'registrationNumber': '01', 'companyId': 'Qa.Coders', '_id': '655e91a1748c617229bcd64f'}], '__v': 0}, 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTVlOTFhMTc0OGM2MTcyMjliY2Q2NGUiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2L0V2R29tN0JxTTVlY0dZYVhDbXMueXN4MXhMYWhPWmkvVHp4MU9mb2U4ZWVBVm5taEJzeSIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoicXVhcnRhLWZlaXJhLCAyMi8xMS8yMDIzLCAyMDo0MToyMCBCUlQiLCJyZWdpc3RyYXRpb25OdW1iZXIiOiIwMSIsImNvbXBhbnlJZCI6IlFhLkNvZGVycyIsIl9pZCI6IjY1NWU5MWExNzQ4YzYxNzIyOWJjZDY0ZiJ9XSwiX192IjowLCJpYXQiOjE3MjA0NDQ2MDMsImV4cCI6MTcyMDUzMTAwM30.Qw_K9PhtLBwhqDEaz64_VAzBsm2Ho-z8IX9uK8RWGTU'}</msg>
+<status status="PASS" starttime="20240708 10:15:51.815" endtime="20240708 10:15:51.816"/>
+</kw>
+<status status="PASS" starttime="20240708 10:15:47.382" endtime="20240708 10:15:51.817"/>
+</kw>
+<status status="PASS" starttime="20240708 10:15:47.381" endtime="20240708 10:15:51.818"/>
+</test>
+<status status="PASS" starttime="20240708 10:15:46.746" endtime="20240708 10:15:51.821"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Login">Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
