@@ -1,0 +1,5 @@
+LoginAdmin:
+  mail: sysadmin@qacoders.com
+  mailInv: martins@qacoders.com
+  password: 1234@Test
+  passwordInv: 1234
