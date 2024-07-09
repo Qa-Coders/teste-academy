@@ -1,12 +1,14 @@
-### Versionamento de Código
+### Versionamento de Código ###
 
-## Bruna was here
+## Bruna was here ##
 
 
-# 123
+# 123 #
 
-## Você não atualizou o projeto né?##
+## Você não atualizou o projeto né? ##
 
 ## 007 ##
 
-# fazendo o pull request para atualizar a branch"
+# fazendo o pull request para atualizar a branch #
+
+# Criando uma branch para versionamento (Rebeca) #
